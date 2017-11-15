@@ -1,0 +1,368 @@
+<html>
+	<head>
+		<title> Calculatrice </title>
+		<meta charset="UTF-8">
+		<style type="text/css">
+
+			*
+			{
+				font-size: 14px;
+				font-family: verdana, sans-serif;
+			}
+
+			.all_wrap
+			{
+				margin-top: 100px;
+				margin-left: 500px;
+			}
+
+			.calc1
+			{
+				margin-top: 30px;
+				margin-left: 20px;
+				background-color: lightblue;
+				padding: 10px;
+				border-radius: 5px;
+				border-bottom: 3px #4169E1 solid;
+				box-shadow: 0px 5px 5px gray;
+				width: 220px;
+				height: 180px;
+			}
+
+			.calc2
+			{
+				margin-top: 30px;
+				margin-left: 20px;
+				background-color: #DDA0DD;
+				padding: 10px;
+				border-radius: 5px;
+				border-bottom: 3px #800080 solid;
+				box-shadow: 0px 5px 5px gray;
+				width: 220px;
+				height: 250px;
+			}
+
+			.btnNum, .btnOper, .btnResu, .btnOperspes, .btnClear
+			{
+				border: 0px;
+				padding: 5px;
+				float: left;
+				width: 50px;
+				height: 30px;
+				margin: 2px;
+				text-shadow: 1px 1px 2px gray;
+				border-radius: 10px;
+				cursor: pointer;
+			}
+
+			.btnNum:hover, .btnOper:hover, .btnResu:hover, .btnOperspes:hover, .btnClear:hover
+			{
+				background-color: white;
+				border-bottom: 3px yellow solid;
+			}
+
+			.btnNum:active, .btnOper:active, .btnResu:active, .btnOperspes:active, .btnClear:active
+			{
+				background-color: #DEB887;
+				border-bottom: 3px coral solid;
+			}
+
+			.btnClear
+			{
+				background-color: coral;
+				border-bottom: 3px #D2691E solid;
+			}
+
+			.btnNum
+			{
+				background-color: #E0FFFF;
+				border-bottom: 3px #20B2AA solid;
+			}
+
+			.btnOper
+			{
+				background-color: lightgray;
+				border-bottom: 3px gray solid;
+			}
+
+			.btnResu
+			{
+				background-color: orange;
+				border-bottom: 3px olive solid;
+			}
+
+			.btnOperspes
+			{
+				background-color: #ADFF2F;
+				border-bottom: 3px #32CD32 solid;
+			}
+
+			#input, #input2
+			{
+				border: 0px;
+				border-top: 3px darkgray solid;
+				border-radius: 10px;
+				background-color: #E6E6FA;
+				padding: 5px;
+				width: 220px;
+				margin-bottom: 10px;
+				text-shadow: 1px 1px 2px gray;
+			}
+
+			#copyright
+			{
+				padding: 5px;
+				width: 190px;
+				border-radius: 2px;
+				text-shadow: 2px 1px 3px black;
+				background-color: yellow;
+				border: 2px orange solid;
+				float: right;
+				color: white;
+				margin: 30px;
+				box-shadow: 0px 2px 5px gray;
+				cursor: default;
+			}
+
+		</style>
+		<script type="text/javascript">
+
+			var memory  = "0";
+		    var current = "0";
+		    var operation = 0;
+
+			function clearall()
+			{
+				memory  = "0";
+			    current = "0";
+			    operation = 0;
+			    var input = document.getElementById('input');
+				input.value = current;
+
+				var input2 = document.getElementById('input2');
+				input2.value = current;
+			}
+
+			function addnum(num)
+			{
+				if(current == 0 || current == null)
+					current = num;
+				else
+					current = current + num;
+
+				var input = document.getElementById('input');
+				input.value = current;
+			}
+
+			function operator(opera) 
+			{
+				if (opera == "x")
+				{ operation = 1; }
+
+				if (opera == "÷")
+				{ operation = 2; }
+
+				if (opera == "+")
+				{ operation = 3; }
+
+				if (opera == "-")
+				{ operation = 4; }
+
+				memory = current;
+				current = "";
+
+				var input = document.getElementById('input');
+				input.value = current;
+			}
+
+			function calculate()
+			{
+				if (operation == 1)
+				{ current = eval(memory) * eval(current); }
+
+				if (operation == 2)
+				{ current = eval(memory) / eval(current); }
+
+				if (operation == 3)
+				{ current = eval(memory) + eval(current); }
+
+				if (operation == 4)
+				{ current = eval(memory) - eval(current); }
+
+				operation = 0;
+				memory    = "0";
+				
+				var input = document.getElementById('input');
+				input.value = current;
+
+				current = "";
+			}
+
+			////////////////////////////////////////////////////////////////////////
+
+			function addnum2(num)
+			{
+				if(current == 0 || current == null)
+					current = num;
+				else
+					current = current + num;
+
+				var input = document.getElementById('input2');
+				input.value = current;
+			}
+
+			function operator2(opera) 
+			{
+				if (opera == "x")
+				{ operation = 1; }
+
+				if (opera == "÷")
+				{ operation = 2; }
+
+				if (opera == "+")
+				{ operation = 3; }
+
+				if (opera == "-")
+				{ operation = 4; }
+
+				if (opera == "%")
+				{ operation = 5; }
+
+				memory = current;
+				current = "";
+
+				var input = document.getElementById('input2');
+				input.value = current;
+			}
+
+			function calculate2()
+			{
+				if (operation == 1)
+				{ current = eval(memory) * eval(current); }
+
+				if (operation == 2)
+				{ current = eval(memory) / eval(current); }
+
+				if (operation == 3)
+				{ current = eval(memory) + eval(current); }
+
+				if (operation == 4)
+				{ current = eval(memory) - eval(current); }
+
+				if (operation == 5)
+				{ current = eval(memory) % eval(current); }
+
+				operation = 0;
+				memory    = "0";
+				
+				var input = document.getElementById('input2');
+				input.value = current;
+
+				current = "";
+			}
+
+			////////////////////////////////////////////////////////////////////////
+
+			function power_calc()
+			{
+				current = Math.pow(current, 2);
+				var input = document.getElementById('input2');
+				input.value = current;
+			}
+
+			function cos_calc()
+			{
+				current = Math.cos(current);
+				var input = document.getElementById('input2');
+				input.value = current;
+			}
+
+			function sin_calc()
+			{
+				current = Math.sin(current);
+				var input = document.getElementById('input2');
+				input.value = current;
+			}
+
+			function sqrt_calc()
+			{
+				current = Math.sqrt(current);
+				var input = document.getElementById('input2');
+				input.value = current;
+			}
+
+			function log_calc()
+			{
+				current = Math.log(current);
+				var input = document.getElementById('input2');
+				input.value = current;
+			}
+
+			function exp_calc()
+			{
+				current = Math.exp(current);
+				var input = document.getElementById('input2');
+				input.value = current;
+			}
+
+			function tan_calc()
+			{
+				current = Math.tan(current);
+				var input = document.getElementById('input2');
+				input.value = current;
+			}
+
+		</script>
+	</head>
+	<body>
+		<div class="all_wrap">
+			<div class="calc1">
+				<div> <input id="input" type="text" value="0"> </div>
+				<div> <input class="btnClear" type="button" value=" C " onclick="clearall()"> </div>
+				<div> <input class="btnNum" type="button" value=" 7 " onclick="addnum('7')"> </div>
+				<div> <input class="btnNum" type="button" value=" 8 " onclick="addnum('8')"> </div>
+				<div> <input class="btnNum" type="button" value=" 9 " onclick="addnum('9')"> </div>
+				<div> <input class="btnOper" type="button" value=" + " onclick="operator('+')"> </div>
+				<div> <input class="btnNum" type="button" value=" 4 " onclick="addnum('4')"> </div>
+				<div> <input class="btnNum" type="button" value=" 5 " onclick="addnum('5')"> </div>
+				<div> <input class="btnNum" type="button" value=" 6 " onclick="addnum('6')"> </div>
+				<div> <input class="btnOper" type="button" value=" - " onclick="operator('-')"> </div>
+				<div> <input class="btnNum" type="button" value=" 1 " onclick="addnum('1')"> </div>
+				<div> <input class="btnNum" type="button" value=" 2 " onclick="addnum('2')"> </div>
+				<div> <input class="btnNum" type="button" value=" 3 " onclick="addnum('3')"> </div>
+				<div> <input class="btnOper" type="button" value=" ÷ " onclick="operator('÷')"> </div>
+				<div> <input class="btnOper" type="button" value=" x " onclick="operator('x')"> </div>
+				<div> <input class="btnNum" type="button" value=" 0 " onclick="addnum('0')"> </div>
+				<div> <input class="btnResu" type="button" value=" = " onclick="calculate()"> </div>
+			</div>
+			<div class="calc2">
+				<div> <input id="input2" type="text" value="0"> </div> 
+				<div> <input class="btnClear" type="button" value=" C " onclick="clearall()"> </div>
+				<div> <input class="btnNum" type="button" value=" 7 " onclick="addnum2('7')"> </div>
+				<div> <input class="btnNum" type="button" value=" 8 " onclick="addnum2('8')"> </div>
+				<div> <input class="btnNum" type="button" value=" 9 " onclick="addnum2('9')"> </div>
+				<div> <input class="btnOper" type="button" value=" + " onclick="operator2('+')"> </div>
+				<div> <input class="btnNum" type="button" value=" 4 " onclick="addnum2('4')"> </div>
+				<div> <input class="btnNum" type="button" value=" 5 " onclick="addnum2('5')"> </div>
+				<div> <input class="btnNum" type="button" value=" 6 " onclick="addnum2('6')"> </div>
+				<div> <input class="btnOper" type="button" value=" - " onclick="operator2('-')"> </div>
+				<div> <input class="btnNum" type="button" value=" 1 " onclick="addnum2('1')"> </div>
+				<div> <input class="btnNum" type="button" value=" 2 " onclick="addnum2('2')"> </div>
+				<div> <input class="btnNum" type="button" value=" 3 " onclick="addnum2('3')"> </div>
+				<div> <input class="btnOper" type="button" value=" ÷ " onclick="operator2('÷')"> </div>
+				<div> <input class="btnOper" type="button" value=" x " onclick="operator2('x')"> </div>
+				<div> <input class="btnNum" type="button" value=" 0 " onclick="addnum2('0')"> </div>
+				<div> <input class="btnResu" type="button" value=" = " onclick="calculate2()"> </div>
+				<div> <input class="btnOperspes" type="button" value=" % " onclick="operator2('%')"> </div>
+				<div> <input class="btnOperspes" type="button" value=" ^2 " onclick="power_calc()"> </div>
+				<div> <input class="btnOperspes" type="button" value=" ^3 " onclick="sqrt_calc()"> </div>
+				<div> <input class="btnOperspes" type="button" value=" cos " onclick="cos_calc()"> </div>
+				<div> <input class="btnOperspes" type="button" value=" sin " onclick="sin_calc()"> </div>
+				<div> <input class="btnOperspes" type="button" value=" tan " onclick="tan_calc()"> </div>
+				<div> <input class="btnOperspes" type="button" value=" log " onclick="log_calc()"> </div>
+				<div> <input class="btnOperspes" type="button" value=" exp " onclick="exp_calc()"> </div>
+			</div>
+		</div>
+		<div id="copyright"> CHEMS ED-DINE RACHIDI </div>
+	</body>
+</html>
